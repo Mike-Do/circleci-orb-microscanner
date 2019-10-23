@@ -3,9 +3,9 @@
 
 ## What is the MicroScanner Orb?
 
-Aqua Security's MicroScanner enables you check your container images for vulnerabilities. If your image has any known high-severity issue, MicroScanner can fail the image build, making it easy to include as a step in your CI/CD pipeline.
+Aqua Security's MicroScanner enables you to check your container images for vulnerabilities. If your image has any known high-severity issues, MicroScanner can fail said image build, thus making it easy to include as a step in your CI/CD pipeline.
 
-The MicroScanner itself is a small, easy to implement container vulnerabilty scanning tool. It has been embedded in the MicroScanner Orb to be called upon during more complex workflows. The MicroScanner has two modes: community and enterprise. This Orb allows for both modes. When used with a communitry mode scanning token as described on the MicroScanner GitHub site token holders may run 100 scans a month  When an Enterprise Aqua Console is specified, the MicroScanner will utilize a more granular, configurable scan policy.
+The MicroScanner itself is a small, easy-to-implement container vulnerabilty scanning tool. It has been embedded in the MicroScanner Orb to be called upon during more complex workflows. The MicroScanner has two modes: community and enterprise. This Orb allows for both modes. When used with a community-mode scanning token as described on the MicroScanner GitHub site, token holders may run 100 scans a month. When an Enterprise Aqua Console is specified, the MicroScanner will utilize a more granular, configurable scan policy.
 
 > Note: The freely-available Community Edition is aimed at individual developers and open source projects who may not have control over the full CI/CD pipeline. The <a href="https://www.aquasec.com/use-cases/continuous-image-assurance/">Aqua Security commercial solution</a> is designed to be hooked into your CI/CD pipeline after the image build is complete, and/or to scan images from a public or private container registry.
 
@@ -18,20 +18,20 @@ The MicroScanner Orb is an easy way to get started creating free, automated vuln
 
 ### 1. Register for a MicroScanner token as described [here.](https://github.com/aquasecurity/microscanner)
 
-### 2. Create a context in the CircleCi portal and assign the required variables
+### 2. Create a Context in the CircleCi Portal and Assign the Required Variables
     Navigate to Org Settings > Context and create a context
 
 <p align="left">
   <img alt="Create a context" src="https://github.com/aquasecurity/circleci-orb-microscanner/blob/master/images/context1.png">
 </p>
 
-### 3. Within your new context create an environment variable named "AQUA_TOKEN" and populate it with the token from step #1
+### 3. Within your new Context, Create an Environment Variable named "AQUA_TOKEN" and Populate it with the Token from Step #1
 
 <p align="left">
   <img alt="Add the AQUA_TOKEN environment variable" src="https://github.com/aquasecurity/circleci-orb-microscanner/blob/master/images/contextEnvVar.png">
 </p>
 
-### 4. Add the required configuration to your build configuration
+### 4. Add the Required Configuration to your Build Configuration
 
 The following `.circleci/config.yml` is an example of a docker build configuration based on https://circleci.com/docs/2.0/building-docker-images/
 
@@ -98,7 +98,7 @@ workflows:
 ```
 
 ## Viewing Scan Results
-By default the MicroScanner will pass a `0` for a passing scan (that is, a scan that has no high ranking vulnerabilities) and a `4` for a failing scan. This `4` of course stops the CircleCi process.
+By default the MicroScanner will pass a `0` for a passing scan (that is, a scan that has no high ranking vulnerabilities) and a `4` for a failing scan. This `4`, of course, stops the CircleCi process.
 
 A report is created upon a failed scan. This is linked to within the CircleCi as an artifact. Navigate to the artifact tab in the CircleCi dashboard for viewing this report.
 
